@@ -1,3 +1,5 @@
+// The general idea of popup window and tiny bit of code was adapted from
+// https://www.cluemediator.com/create-simple-popup-in-reactjs
 import './Popup.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
