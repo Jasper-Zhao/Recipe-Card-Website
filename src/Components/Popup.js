@@ -1,7 +1,7 @@
 import './Popup.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {modifyRecipe} from "./actions";
+import {modifyRecipe} from "../actions";
 export default function Popup(props){
     const cardList = useSelector(state => state.cardList);
     const selectedCard = cardList.find(e => {return e.id === props.id})

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./Form.css"
-import { addRecipe } from './actions'
+import { addRecipe } from '../actions'
 import { useDispatch } from "react-redux";
 
 

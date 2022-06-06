@@ -1,9 +1,9 @@
 import './App.css';
 import {useState} from 'react'
-import Form from './Form.js'
-import Card from './Card.js';
+import Form from './Components/Form.js'
+import Card from './Components/Card.js';
 import {useSelector, useDispatch} from 'react-redux';
-import Popup from "./Popup";
+import Popup from "./Components/Popup";
 import {deleteAllRecipe} from "./actions";
 
 
