@@ -1,0 +1,16 @@
+.new-recipe {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    top: 80px;
+    background-color: #569148;
+    padding: 10px;
+    box-shadow: 0 8px 16px 0 rgb(65, 65, 65);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.new-recipe:hover {
+    box-shadow: 0 16px 32px 0 rgb(180, 180, 180);
+}

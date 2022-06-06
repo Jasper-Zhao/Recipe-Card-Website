@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react'
+import Form from './Form.js'
+import Card from './Card.js';
+import {useSelector, useDispatch} from 'react-redux';
+import Popup from "./Popup";
+import {deleteAllRecipe} from "./actions";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const cardList = useSelector(state => state.cardList);
+    const [popUp, setPopup] = useState(0);
+    const dispatch = useDispatch();
+
+
+    return (
+        <div>
+            <Form/>
+            {cardList.map((e) => {
+                return <Card id={e.id} title={e.title} ingredients={e.ingredients}
+                             togglePopup={setPopup}/>
+            })}
+
+            {popUp ? (<Popup togglePopup={setPopup} id={popUp}/>) : null}
+            <button type="button" id="reset" onClick={() => {
+                dispatch(deleteAllRecipe());
+            }
+            }>Reset</button>
+
+        </div>
+
+
+    );
 }
 
 export default App;
