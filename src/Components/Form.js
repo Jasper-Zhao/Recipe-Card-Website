@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import "./Form.css"
-import { addRecipe } from '../actions'
+import { addRecipe } from '../redux/cards.js'
 import { useDispatch } from "react-redux";
 
 
@@ -11,7 +11,12 @@ export default function Form() {
     const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(addRecipe(title,ingredients,instructions));
+        const newCard = {
+            title: title,
+            ingredients: ingredients,
+            instructions: instructions
+        }
+        dispatch(addRecipe(newCard));
     }
 
     return (

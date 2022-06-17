@@ -1,6 +1,6 @@
 import './Card.css'
 import { useDispatch } from "react-redux";
-import { deleteRecipe } from '../actions'
+import { deleteRecipe } from '../redux/cards.js'
 export default function Card(props) {
     let id = props.id;
     const dispatch = useDispatch();
@@ -14,7 +14,6 @@ export default function Card(props) {
             <button type="button" onClick={() => {
                 dispatch(deleteRecipe(id));
             }}> delete </button>
-
         </div>
     )
 
