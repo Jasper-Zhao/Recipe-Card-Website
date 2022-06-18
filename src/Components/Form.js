@@ -2,6 +2,7 @@ import { useState } from 'react';
 import "./Form.css"
 import { addRecipe } from '../redux/cards.js'
 import { useDispatch } from "react-redux";
+import { addCardAsync } from "../redux/thunks";
 
 
 export default function Form() {
@@ -16,7 +17,7 @@ export default function Form() {
             ingredients: ingredients,
             instructions: instructions
         }
-        dispatch(addRecipe(newCard));
+        dispatch(addCardAsync(newCard));
     }
 
     return (
