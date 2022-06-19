@@ -83,6 +83,7 @@ const cardsSlice = createSlice({
             .addCase(addCardAsync.rejected, (state, action) => {
                 state.addCard = REQUEST_STATE.REJECTED;
                 state.error = action.error;
+                alert("Recipe title cannot be empty!");
             })
             .addCase(editCardAsync.pending, (state) => {
                 state.editCard = REQUEST_STATE.PENDING;
