@@ -4,6 +4,7 @@ import './Popup.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {modifyRecipe} from "../redux/cards.js";
+import {editCardAsync} from "../redux/thunks";
 
 export default function Popup(props) {
     const cardList = useSelector(state => state.cards.cardList);
@@ -23,7 +24,7 @@ export default function Popup(props) {
             ingredients: ingredients,
             instructions: instructions
         }
-        dispatch(modifyRecipe(modifiedCard));
+        dispatch(editCardAsync(modifiedCard));
         props.togglePopup(0);
     }
 

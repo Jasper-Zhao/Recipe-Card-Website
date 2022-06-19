@@ -1,6 +1,7 @@
 import './Card.css'
 import { useDispatch } from "react-redux";
 import { deleteRecipe } from '../redux/cards.js'
+import {deleteCardAsync} from "../redux/thunks";
 export default function Card(props) {
     let id = props.id;
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function Card(props) {
             <p>{props.ingredients}</p>
             </div>
             <button type="button" onClick={() => {
-                dispatch(deleteRecipe(id));
+                dispatch(deleteCardAsync(id));
             }}> delete </button>
         </div>
     )

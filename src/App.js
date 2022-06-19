@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Popup from "./Components/Popup";
 import { deleteAllRecipe } from "./redux/cards.js";
 import {ErrorAlert} from "./Components/ErrorAlert";
-import {getCardsAsync} from "./redux/thunks";
+import {getCardsAsync, resetAsync} from "./redux/thunks";
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getCardsAsync());
-    });
+    }, []);
 
     return (
         <div>
@@ -28,7 +28,7 @@ function App() {
 
             {popUp ? (<Popup togglePopup={setPopup} id={popUp}/>) : null}
             <button type="button" id="reset" onClick={() => {
-                dispatch(deleteAllRecipe());
+                dispatch(resetAsync());
             }
             }>Reset</button>
 
