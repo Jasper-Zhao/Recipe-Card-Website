@@ -1,11 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { actionTypes } from './actionTypes';
-import {getCards, addCard, editCard, deleteCard, reset} from './services.js';
+import {getCards, addCard, editCard, deleteCard, reset, searchCards} from './services.js';
 
 export const getCardsAsync = createAsyncThunk(
     actionTypes.GET_CARDS,
     async () => {
         return await getCards();
+    }
+);
+
+export const searchCardsAsync = createAsyncThunk(
+    actionTypes.SEARCH_CARDS,
+    async (params) => {
+        return await searchCards(params);
     }
 );
 

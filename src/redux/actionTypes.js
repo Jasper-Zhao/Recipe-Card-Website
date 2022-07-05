@@ -3,5 +3,6 @@ export const actionTypes = {
     ADD_CARDS: 'cards/addCard',
     EDIT_CARD: 'cards/editCard',
     DELETE_CARD: 'cards/deleteCard',
+    SEARCH_CARDS: 'cards/searchCards',
     CARD_RESET: 'cards/reset'
 }

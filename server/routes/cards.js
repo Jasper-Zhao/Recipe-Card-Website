@@ -8,14 +8,36 @@ const Mongoose = require("mongoose");
 
 /* GET cards listing. */
 router.get('/', function (req, res, next) {
-    Recipe.find({}, (err, recipes) => {
-        if (err){
-            console.log(err);
-        }
-        else{
-            return res.send(recipes);
-        }
-    })
+    const keywords = req.query.keywords;
+    if(req.query.type === "title") {
+        Recipe.find({title: {$regex: keywords , $options : 'i'}} , (err, recipes) => {
+            if (err){
+                console.log(err);
+            }
+            else{
+                return res.send(recipes);
+            }})
+
+    } else if (req.query.type === "ingredient") {
+        Recipe.find({ingredients: {$regex: keywords, $options : 'i'}} , (err, recipes) => {
+            if (err){
+                console.log(err);
+            }
+            else{
+                return res.send(recipes);
+            }})
+    }
+    else {
+        Recipe.find({}, (err, recipes) => {
+            if (err){
+                console.log(err);
+            }
+            else{
+                return res.send(recipes);
+            }
+        })
+    }
+
 });
 
 router.post('/', function (req, res, next) {

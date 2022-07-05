@@ -26,6 +26,16 @@ export const getCards = async () => {
     return response.json();
 }
 
+export const searchCards = async (params) => {
+    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards?' + new URLSearchParams({
+        type: params.type,
+        keywords: params.keywords
+    }), {
+        method: 'GET'
+    })
+    return response.json()
+}
+
 export const editCard = async (card) => {
     const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards', {
         method: 'PATCH',
@@ -58,7 +68,7 @@ export const deleteCard = async (id) => {
 
 
 export const reset = async () => {
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards/', {
+    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards', {
         method: 'DELETE',
     });
 

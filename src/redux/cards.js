@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {REQUEST_STATE} from "./utils";
-import {addCardAsync, deleteCardAsync, editCardAsync, getCardsAsync, resetAsync} from "./thunks";
+import {addCardAsync, deleteCardAsync, editCardAsync, getCardsAsync, resetAsync, searchCardsAsync} from "./thunks";
 
 
 const INITIAL_STATE = {
@@ -76,6 +76,26 @@ const cardsSlice = createSlice({
                 });
             })
             .addCase(getCardsAsync.rejected, (state, action) => {
+                state.getCards = REQUEST_STATE.REJECTED;
+                state.error = action.error;
+            })
+            .addCase(searchCardsAsync.pending, (state) => {
+                state.getCards = REQUEST_STATE.PENDING;
+                state.error = null;
+            })
+            .addCase(searchCardsAsync.fulfilled, (state, action) => {
+                state.getCards = REQUEST_STATE.FULFILLED;
+                state.cardList = action.payload.map((card) => {
+                    return {
+                        id: card._id,
+                        title: card.title,
+                        ingredients: card.ingredients,
+                        instructions: card.instructions,
+                        modifyDate: card.updatedAt
+                    };
+                });
+            })
+            .addCase(searchCardsAsync.rejected, (state, action) => {
                 state.getCards = REQUEST_STATE.REJECTED;
                 state.error = action.error;
             })
