@@ -16,10 +16,10 @@ function App() {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className="App">
             <Form/>
             {cardList.map((e) => {
-                return <Card key={e.id} id={e.id} title={e.title} ingredients={e.ingredients}
+                return <Card key={e.id} id={e.id} title={e.title} ingredients={e.ingredients} modifyDate={e.modifyDate}
                              togglePopup={setPopup}/>
             })}
 

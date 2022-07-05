@@ -3,7 +3,6 @@ import {REQUEST_STATE} from "./utils";
 import {addCardAsync, deleteCardAsync, editCardAsync, getCardsAsync, resetAsync} from "./thunks";
 
 
-let idCounter = 2;
 const INITIAL_STATE = {
     cardList: [],
     getCards: REQUEST_STATE.IDLE,
@@ -20,7 +19,7 @@ const cardsSlice = createSlice({
     reducers: {
         addRecipe: (state, action) => {
             const newCard = {
-                id: ++idCounter,
+                id: action.payload._id,
                 title: action.payload.title,
                 ingredients: action.payload.ingredients,
                 instructions: action.payload.instructions
@@ -66,7 +65,15 @@ const cardsSlice = createSlice({
             })
             .addCase(getCardsAsync.fulfilled, (state, action) => {
                 state.getCards = REQUEST_STATE.FULFILLED;
-                state.cardList = action.payload;
+                state.cardList = action.payload.map((card) => {
+                    return {
+                        id: card._id,
+                        title: card.title,
+                        ingredients: card.ingredients,
+                        instructions: card.instructions,
+                        modifyDate: card.updatedAt
+                    };
+                });
             })
             .addCase(getCardsAsync.rejected, (state, action) => {
                 state.getCards = REQUEST_STATE.REJECTED;
@@ -78,7 +85,14 @@ const cardsSlice = createSlice({
             })
             .addCase(addCardAsync.fulfilled, (state, action) => {
                 state.addCard = REQUEST_STATE.FULFILLED;
-                state.cardList.push(action.payload);
+                const newCard = {
+                    id: action.payload._id,
+                    title: action.payload.title,
+                    ingredients: action.payload.ingredients,
+                    instructions: action.payload.instructions,
+                    modifyDate: action.payload.updatedAt
+                }
+                state.cardList.push(newCard);
             })
             .addCase(addCardAsync.rejected, (state, action) => {
                 state.addCard = REQUEST_STATE.REJECTED;
@@ -91,9 +105,16 @@ const cardsSlice = createSlice({
             })
             .addCase(editCardAsync.fulfilled, (state, action) => {
                 state.editCard = REQUEST_STATE.FULFILLED;
+                const updatedCard = {
+                    id: action.payload._id,
+                    title: action.payload.title,
+                    ingredients: action.payload.ingredients,
+                    instructions: action.payload.instructions,
+                    modifyDate: action.payload.updatedAt
+                }
                 state.cardList = state.cardList.map((card) => {
-                    if (card.id === action.payload.id) {
-                        return action.payload;
+                    if (card.id === action.payload._id) {
+                        return updatedCard;
                     } else {
                         return card;
                     }

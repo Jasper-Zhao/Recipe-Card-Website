@@ -26,14 +26,14 @@ export default function Form() {
         <div className="new-recipe">
             <h2>Create a new recipe below:</h2>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="title"> Recipe title: </label>
+            <label className="label" htmlFor="title"> Recipe title: </label>
             <input type="text" name="title" placeholder="name of the recipe" value={title}
     onChange={element => setTitle(element.target.value)}/><br/>
-            <label htmlFor="ingredients"> Ingredients: </label><br/>
+            <label className="label" htmlFor="ingredients"> Ingredients: </label><br/>
             <textarea id="ingredients" name="ingredients" rows="4" cols="50" placeholder="List of ingredients"
                       value={ingredients} onChange={element => setIngredients(element.target.value)}/><br/>
 
-            <label htmlFor="instructions">Instructions: </label><br/>
+            <label className="label" htmlFor="instructions">Instructions: </label><br/>
             <textarea id="instructions" name="instructions" rows="4" cols="50" placeholder="List of instructions"
                       value={instructions} onChange={element => setInstructions(element.target.value)}/><br/>
             <button>Add</button>

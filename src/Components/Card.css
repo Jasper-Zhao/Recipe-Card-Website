@@ -16,3 +16,12 @@
     box-shadow: 0 16px 32px 0 rgb(180, 180, 180);
     transform: scale3d(1.05,1.05,1.05);
 }
+
+.ingredients {
+    font-size: 14pt;
+}
+
+.modifyDate {
+    font-size: 10pt;
+    font-style: italic;
+}
