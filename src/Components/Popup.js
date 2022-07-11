@@ -3,7 +3,6 @@
 import './Popup.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
-import {modifyRecipe} from "../redux/cards.js";
 import {editCardAsync} from "../redux/thunks";
 
 export default function Popup(props) {
@@ -14,6 +13,7 @@ export default function Popup(props) {
     const [title, setTitle] = useState(selectedCard.title);
     const [ingredients, setIngredients] = useState(selectedCard.ingredients);
     const [instructions, setInstructions] = useState(selectedCard.instructions);
+    const [completionTime,setCompletionTime] = useState(selectedCard.completionTime);
     const dispatch = useDispatch();
 
     const handleModify = (event) => {
@@ -22,7 +22,8 @@ export default function Popup(props) {
             id: selectedCard.id,
             title: title,
             ingredients: ingredients,
-            instructions: instructions
+            instructions: instructions,
+            completionTime: completionTime
         }
         dispatch(editCardAsync(modifiedCard));
         props.togglePopup(0);
@@ -41,6 +42,9 @@ export default function Popup(props) {
                 <textarea id="instructions" name="instructions" rows="6" cols="50"
                           placeholder={selectedCard.instructions}
                           value={instructions} onChange={element => setInstructions(element.target.value)}/><br/>
+                <h2>Completion time:</h2>
+                <input type="text" name="completionTime" placeholder={selectedCard.completionTime}
+                       value={completionTime} onChange={element => setCompletionTime(element.target.value)}/><br/>
                 <button id="button" type="button" onClick={
                     (e) => {
                         e.preventDefault();

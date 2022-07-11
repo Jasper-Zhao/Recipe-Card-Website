@@ -21,6 +21,10 @@
     font-size: 14pt;
 }
 
+.completionTime {
+    font-weight: bold;
+}
+
 .modifyDate {
     font-size: 10pt;
     font-style: italic;

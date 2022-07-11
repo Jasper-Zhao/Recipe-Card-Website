@@ -22,7 +22,8 @@ const cardsSlice = createSlice({
                 id: action.payload._id,
                 title: action.payload.title,
                 ingredients: action.payload.ingredients,
-                instructions: action.payload.instructions
+                instructions: action.payload.instructions,
+                completionTime: action.payload.completionTime
             }
             state.cardList.push(newCard);
         },
@@ -42,7 +43,8 @@ const cardsSlice = createSlice({
                         id: action.payload.id,
                         title: action.payload.title,
                         ingredients: action.payload.ingredients,
-                        instructions: action.payload.instructions
+                        instructions: action.payload.instructions,
+                        completionTime: action.payload.completionTime
                     }
                 } else {
                     return e;
@@ -71,6 +73,7 @@ const cardsSlice = createSlice({
                         title: card.title,
                         ingredients: card.ingredients,
                         instructions: card.instructions,
+                        completionTime: card.completionTime,
                         modifyDate: card.updatedAt
                     };
                 });
@@ -91,6 +94,7 @@ const cardsSlice = createSlice({
                         title: card.title,
                         ingredients: card.ingredients,
                         instructions: card.instructions,
+                        completionTime: card.completionTime,
                         modifyDate: card.updatedAt
                     };
                 });
@@ -110,6 +114,7 @@ const cardsSlice = createSlice({
                     title: action.payload.title,
                     ingredients: action.payload.ingredients,
                     instructions: action.payload.instructions,
+                    completionTime: action.payload.completionTime,
                     modifyDate: action.payload.updatedAt
                 }
                 state.cardList.push(newCard);
@@ -130,6 +135,7 @@ const cardsSlice = createSlice({
                     title: action.payload.title,
                     ingredients: action.payload.ingredients,
                     instructions: action.payload.instructions,
+                    completionTime: action.payload.completionTime,
                     modifyDate: action.payload.updatedAt
                 }
                 state.cardList = state.cardList.map((card) => {

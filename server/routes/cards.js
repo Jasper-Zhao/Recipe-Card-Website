@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
             }
             else{
                 return res.send(recipes);
-            }})
+              }})
     }
     else {
         Recipe.find({}, (err, recipes) => {
@@ -48,7 +48,8 @@ router.post('/', function (req, res, next) {
     const newRecipe = new Recipe({
         title: req.body.title,
         ingredients: req.body.ingredients,
-        instructions: req.body.instructions
+        instructions: req.body.instructions,
+        completionTime: req.body.completionTime
     });
 
     newRecipe.save().then((data) => {
@@ -66,7 +67,8 @@ router.patch('/', function (req, res) {
     const editedCard = {
         title: req.body.title,
         ingredients: req.body.ingredients,
-        instructions: req.body.instructions
+        instructions: req.body.instructions,
+        completionTime: req.body.completionTime
     }
 
     Recipe.findByIdAndUpdate(req.body.id, editedCard, (err, recipe) => {

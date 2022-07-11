@@ -8,18 +8,21 @@ export default function Form() {
     const [title, setTitle] = useState("");
     const [ingredients,setIngredients] = useState("");
     const [instructions,setInstructions] = useState("");
+    const [completionTime,setCompletionTime] = useState("");
     const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
         const newCard = {
             title: title,
             ingredients: ingredients,
-            instructions: instructions
+            instructions: instructions,
+            completionTime: completionTime
         }
         dispatch(addCardAsync(newCard));
         setTitle("");
         setIngredients("");
         setInstructions("");
+        setCompletionTime("");
     }
 
     return (
@@ -36,11 +39,15 @@ export default function Form() {
             <label className="label" htmlFor="instructions">Instructions: </label><br/>
             <textarea id="instructions" name="instructions" rows="4" cols="50" placeholder="List of instructions"
                       value={instructions} onChange={element => setInstructions(element.target.value)}/><br/>
+            <label className="label" htmlFor="completionTime">Completion Time: </label><br/>
+            <input type="text" name="completionTime" placeholder={"Estimated Completion Time"}
+                   value={completionTime} onChange={element => setCompletionTime(element.target.value)}/><br/>
             <button>Add</button>
             <button type="button" onClick={ () => {
                 setTitle("");
                 setIngredients("");
                 setInstructions("");
+                setCompletionTime("")
             }}>Clear</button>
         </form>
         </div>

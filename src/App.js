@@ -22,6 +22,7 @@ function App() {
             <Search/>
             {cardList.map((e) => {
                 return <Card key={e.id} id={e.id} title={e.title} ingredients={e.ingredients} modifyDate={e.modifyDate}
+                             completionTime={e.completionTime}
                              togglePopup={setPopup}/>
             })}
 
