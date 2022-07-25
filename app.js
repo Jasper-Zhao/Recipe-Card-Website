@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cors = require('cors');
 const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes');
 var cardsRouter = require('./routes/cards');
 
 var app = express();
@@ -18,9 +18,13 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', indexRouter);
 app.use('/cards',cardsRouter);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
 
 module.exports = app;
