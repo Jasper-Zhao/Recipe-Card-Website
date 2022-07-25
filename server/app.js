@@ -18,11 +18,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-console.log(__dirname)
-app.use(express.static(path.join(__dirname,'build')));
+const filePath = __dirname + '/../'
+app.use(express.static(path.join(filePath,'build')));
 
 app.use('/', indexRouter);
 app.use('/cards',cardsRouter);
 
+app.get('*', (req,res) => {
+    res.sendFile(path.join(filePath + '/build/index.html'))
+})
 
 module.exports = app;
