@@ -1,8 +1,6 @@
-const SERVER_PORT = 3002;
-
 export const addCard = async (card) => {
 
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards', {
+    const response = await fetch('cards', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(card)
@@ -20,14 +18,14 @@ export const addCard = async (card) => {
 
 
 export const getCards = async () => {
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards', {
+    const response = await fetch('cards', {
         method: 'GET',
     });
     return response.json();
 }
 
 export const searchCards = async (params) => {
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards?' + new URLSearchParams({
+    const response = await fetch('cards?' + new URLSearchParams({
         type: params.type,
         keywords: params.keywords
     }), {
@@ -37,7 +35,7 @@ export const searchCards = async (params) => {
 }
 
 export const editCard = async (card) => {
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards', {
+    const response = await fetch('cards', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(card)
@@ -53,7 +51,7 @@ export const editCard = async (card) => {
 }
 
 export const deleteCard = async (id) => {
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards/' + id, {
+    const response = await fetch('cards/' + id, {
         method: 'DELETE',
     });
 
@@ -68,7 +66,7 @@ export const deleteCard = async (id) => {
 
 
 export const reset = async () => {
-    const response = await fetch('http://localhost:'+ SERVER_PORT +'/cards', {
+    const response = await fetch('cards', {
         method: 'DELETE',
     });
 

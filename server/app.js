@@ -10,7 +10,7 @@ var cardsRouter = require('./routes/cards');
 
 var app = express();
 /* Connect to the Database */
-mongoose.connect('mongodb://localhost:27017/Assignment_4',() => {
+mongoose.connect('mongodb+srv://CPSC455:CPSC455@assignment4.vobe6.mongodb.net/?retryWrites=true&w=majority',() => {
     console.log('Connected to database!');
 })
 app.use(cors());
