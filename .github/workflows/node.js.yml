@@ -3,13 +3,12 @@ name: CI/CD
 on:
   pull_request:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - run: cd client && npm install && npm run build
