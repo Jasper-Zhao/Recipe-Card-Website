@@ -5,12 +5,14 @@ import Card from './Components/Card.js';
 import Search from './Components/Search.js';
 import { useSelector, useDispatch } from 'react-redux';
 import Popup from "./Components/Popup";
-import {getCardsAsync, resetAsync} from "./redux/thunks";
+import { getCardsAsync } from "./redux/thunks";
+import ConfirmationDialog from "./Components/ConfirmationDialog";
 
 
 function App() {
     const cardList = useSelector(state => state.cards.cardList);
     const [popUp, setPopup] = useState(0);
+    const [dialog, toggleDialog] = useState(false);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getCardsAsync());
@@ -27,8 +29,9 @@ function App() {
             })}
 
             {popUp ? (<Popup togglePopup={setPopup} id={popUp}/>) : null}
+            {dialog ? (<ConfirmationDialog toggleDialog={toggleDialog} />) : null}
             <button type="button" id="reset" onClick={() => {
-                dispatch(resetAsync());
+                toggleDialog(true)
             }
             }>Reset</button>
 
