@@ -27,7 +27,7 @@ export default function Form() {
 
     return (
         <div className="new-recipe">
-            <h2>Create a new recipe below:</h2>
+            <h2>NEW RECIPES!!!</h2>
         <form onSubmit={handleSubmit}>
             <label className="label" htmlFor="title"> Recipe title: </label>
             <input type="text" name="title" placeholder="name of the recipe" value={title}
