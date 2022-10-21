@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# my-recipe-collector
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple recipe collector website. Created by React, Redux and express. Databased used: MongoDB. This website is deployed to http://my-recipe-collector.herokuapp.com/ 
 
 ## Available Scripts
 
